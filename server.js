@@ -20,9 +20,10 @@ app.get("/", function (request, response) {
 app.get("/scoreboard", function (req, res) {
   let username = process.env.USERNAME,
   password = process.env.PASSWORD,
+  d = new Date(),
   season_name = '2018-playoff',
   format = 'json',
-  for_date = '20180106',
+  for_date = '20180113',
   url = 'https://api.mysportsfeeds.com/v1.1/pull/nfl/' + season_name + '/scoreboard.' + format + '?fordate=' + for_date,
   auth = 'Basic ' + new Buffer(username+ ':' + password).toString('base64');
   
