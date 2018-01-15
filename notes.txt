@@ -2,4 +2,4 @@ https://stackoverflow.com/questions/30541831/make-a-request-every-one-minute-wit
 
 https://github.com/request/request
 
-https://developer.mozilla.org/en-US/docs/Web/API/WindowBase64/Base64_encoding_and_decoding
+https://www.haykranen.nl/2011/06/21/basic-http-authentication-in-node-js-using-the-request-module/

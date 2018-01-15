@@ -37,7 +37,7 @@ app.get("/scoreboard", function (req, res) {
       function (error, response, body) {
         console.log('error:', error); // Print the error if one occurred
         console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-        res.send(body);
+        res.send(typeof body);
       }
   );
 });
