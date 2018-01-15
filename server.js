@@ -17,22 +17,22 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
 
-app.get("/scoreboard", function (request, response) {
-    var username = process.env.USERNAME;
-    var password = process.env.PASSWORD;
-    var season_name;
-    var format;
-    var for_date;
-    var url = 'https://' + username+ ':' + password + 'api.mysportsfeeds.com/v1.1/pull/nfl/{season-name}/scoreboard.{format}?fordate={for-date}';
+app.get("/scoreboard", function (req, res) {
+  var username = process.env.USERNAME;
+  var password = process.env.PASSWORD;
+  var season_name = '2018-playoff';
+  var format = 'json';
+  var for_date = '20180106';
+  var url = 'https://' + username+ ':' + password + 'api.mysportsfeeds.com/v1.1/pull/nfl/' + season_name + '/scoreboard.' + format + '?fordate=' + for_date;
 
-request(
-    {
-        url : url
-    },
-    function (error, response, body) {
-        console.log(body);
-    }
-);
+  request(
+      {
+          url : url
+      },
+      function (error, response, body) {
+          console.log(body);
+      }
+  );
 });
 
 // listen for requests :)
