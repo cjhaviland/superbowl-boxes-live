@@ -18,24 +18,28 @@ app.get("/", function (request, response) {
 });
 
 app.get("/scoreboard", function (req, res) {
-  var username = process.env.USERNAME;
-  var password = process.env.PASSWORD;
-  var season_name = '2018-playoff';
-  var format = 'json';
-  var for_date = '20180106';
-  var url = 'https://' + username+ ':' + password + 'api.mysportsfeeds.com/v1.1/pull/nfl/' + season_name + '/scoreboard.' + format + '?fordate=' + for_date;
+  var username = process.env.USERNAME,
+  password = process.env.PASSWORD,
+  season_name = '2018-playoff',
+  format = 'json',
+  for_date = '20180106',
+  url = 'https://api.mysportsfeeds.com/v1.1/pull/nfl/' + season_name + '/scoreboard.' + format + '?fordate=' + for_date,
+  auth = 'Basic ' + new Buffer(username+ ':' + password).toString('base64');
+  
 
-  /*request(
+  request(
       {
-          url : url
+        url : url,
+        headers: {
+          "Authorization
+        }
       },
       function (error, response, body) {
-          console.log(body);
+        console.log('error:', error); // Print the error if one occurred
+        console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+        res.send(body);
       }
-  );*/
-  
-  console.log('Hello');
-  
+  );
 });
 
 // listen for requests :)
