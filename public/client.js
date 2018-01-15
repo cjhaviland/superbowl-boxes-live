@@ -9,7 +9,7 @@ let hundredGrids = '';
 $(function() {
   createGrids();
 
-  
+  $(hundredGrids).insertAfter(''
 });
 
 let createGrids = () => {
