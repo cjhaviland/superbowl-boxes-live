@@ -9,7 +9,7 @@ let hundredGrids = '';
 $(function() {
   createGrids();
 
-  $(hundredGrids).insertAfter(''
+  $(hundredGrids).insertAfter('nfc');
 });
 
 let createGrids = () => {
