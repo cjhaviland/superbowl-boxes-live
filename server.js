@@ -31,7 +31,7 @@ app.get("/scoreboard", function (req, res) {
       {
         url : url,
         headers: {
-          "Authorization
+          'Authorization' : auth
         }
       },
       function (error, response, body) {
