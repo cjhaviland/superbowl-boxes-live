@@ -2,12 +2,17 @@
 // where your node app starts
 
 // init project
-var express = require('express');
-var app = express();
-var request = require('request');
+let express = require('express'),
+  app = express(),
+  request = require('request'),
+  bodyParser = require('body-parser');
 
-// we've started you off with Express, 
-// but feel free to use whatever libs or frameworks you'd like through `package.json`.
+//// body parser config
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }))
+
+// parse application/json
+app.use(bodyParser.json())
 
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
@@ -17,8 +22,11 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
 
+
+// https://www.mysportsfeeds.com/data-feeds/api-docs#
+// Grabbing live score updates from MySportsFeeds' scoreboard API
 app.get("/scoreboard", function (req, res) {
-  var username = process.env.USERNAME,
+  let username = process.env.USERNAME,
   password = process.env.PASSWORD,
   season_name = '2018-playoff',
   format = 'json',
@@ -37,7 +45,8 @@ app.get("/scoreboard", function (req, res) {
       function (error, response, body) {
         console.log('error:', error); // Print the error if one occurred
         console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-        res.send(typeof body);
+        //res.send(typeof body);
+        res.send(body);
       }
   );
 });
