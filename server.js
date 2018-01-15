@@ -16,22 +16,21 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
 
-app.get("/dreams", function (request, response) {
-  response.send(dreams);
-});
+app.get("/scoreboard", function (request, response) {
+  var request = require('request'),
+    username = process.env.USERNAME,
+    password = process.env.USERNAME,
+    url = `https://${username}:${password}api.mysportsfeeds.com/v1.1/pull/nfl/${season-name}/scoreboard.${format}?fordate=${for-date}`;
 
-// could also use the POST body instead of query string: http://expressjs.com/en/api.html#req.body
-app.post("/dreams", function (request, response) {
-  dreams.push(request.query.dream);
-  response.sendStatus(200);
+request(
+    {
+        url : url
+    },
+    function (error, response, body) {
+        // Do more stuff with 'body' here
+    }
+);
 });
-
-// Simple in-memory store for now
-var dreams = [
-  "Find and count some sheep",
-  "Climb a really tall mountain",
-  "Wash the dishes"
-];
 
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {
