@@ -3,8 +3,8 @@
 
 // init project
 let express = require('express'),
-  app = express(),
-  request = require('request');
+    app = express(),
+    request = require('request');
 
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
