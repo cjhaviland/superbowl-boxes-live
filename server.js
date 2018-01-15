@@ -4,6 +4,7 @@
 // init project
 var express = require('express');
 var app = express();
+var request = require('request');
 
 // we've started you off with Express, 
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.
@@ -17,17 +18,16 @@ app.get("/", function (request, response) {
 });
 
 app.get("/scoreboard", function (request, response) {
-  var request = require('request'),
     username = process.env.USERNAME,
     password = process.env.USERNAME,
-    url = `https://${username}:${password}api.mysportsfeeds.com/v1.1/pull/nfl/${season-name}/scoreboard.${format}?fordate=${for-date}`;
+    url = 'https://' + username+ ':' + password 'api.mysportsfeeds.com/v1.1/pull/nfl/${season-name}/scoreboard.${format}?fordate=${for-date}';
 
 request(
     {
         url : url
     },
     function (error, response, body) {
-        // Do more stuff with 'body' here
+        console.log(body);
     }
 );
 });
