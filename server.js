@@ -18,9 +18,12 @@ app.get("/", function (request, response) {
 });
 
 app.get("/scoreboard", function (request, response) {
-    username = process.env.USERNAME,
-    password = process.env.USERNAME,
-    url = 'https://' + username+ ':' + password 'api.mysportsfeeds.com/v1.1/pull/nfl/${season-name}/scoreboard.${format}?fordate=${for-date}';
+    var username = process.env.USERNAME;
+    var password = process.env.PASSWORD;
+    var season_name;
+    var format;
+    var for_date;
+    var url = 'https://' + username+ ':' + password + 'api.mysportsfeeds.com/v1.1/pull/nfl/{season-name}/scoreboard.{format}?fordate={for-date}';
 
 request(
     {
