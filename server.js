@@ -20,7 +20,6 @@ app.get("/", function (request, response) {
 app.get("/scoreboard", function (req, res) {
   let username = process.env.USERNAME,
   password = process.env.PASSWORD,
-  d = new Date(),
   season_name = '2018-playoff',
   format = 'json',
   for_date = '20180113',
