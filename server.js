@@ -25,14 +25,17 @@ app.get("/scoreboard", function (req, res) {
   var for_date = '20180106';
   var url = 'https://' + username+ ':' + password + 'api.mysportsfeeds.com/v1.1/pull/nfl/' + season_name + '/scoreboard.' + format + '?fordate=' + for_date;
 
-  request(
+  /*request(
       {
           url : url
       },
       function (error, response, body) {
           console.log(body);
       }
-  );
+  );*/
+  
+  console.log('Hello');
+  
 });
 
 // listen for requests :)

@@ -1,0 +1,5 @@
+https://stackoverflow.com/questions/30541831/make-a-request-every-one-minute-with-node-js
+
+https://github.com/request/request
+
+https://developer.mozilla.org/en-US/docs/Web/API/WindowBase64/Base64_encoding_and_decoding
