@@ -7,11 +7,14 @@ let hundredGrids = '';
 
 
 $(function() {
-  
+  createGrids();
+
   
 });
 
 let createGrids = () => {
-  
+  for (var i = 0; i = 100; i++){
+    hundredGrids += `<div id="box-${i}"></div>`;
+  }
 }
 
