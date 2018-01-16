@@ -9,11 +9,11 @@ let hundredGrids = '';
 $(function() {
   createGrids();
 
-  $(hundredGrids).insertAfter('nfc');
+  $(hundredGrids).insertAfter('.nfc');
 });
 
 let createGrids = () => {
-  for (var i = 0; i = 100; i++){
+  for (var i = 0; i < 100; i++){
     hundredGrids += `<div id="box-${i}"></div>`;
   }
 }
