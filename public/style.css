@@ -5,3 +5,16 @@ body{
  display: grid; 
 }
 
+table {
+ table-layout: fixed; 
+  width: 100%;
+  border: 1px solid black
+}
+
+tr {
+ height: 1px; 
+}
+
+td {
+ width: 1px; 
+}
