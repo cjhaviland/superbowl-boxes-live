@@ -14,6 +14,7 @@ table {
 }
 
 td {
+  border: 1px solid;
   width: calc(100%/11);
   text-align: center;
   padding-bottom: calc(100%/11)
@@ -21,4 +22,12 @@ td {
 
 .table{
   width: 80vw;
+}
+
+td[id$="-1"] {
+  background-color: red; 
+}
+
+#row-1 {
+ background-color: red; 
 }
