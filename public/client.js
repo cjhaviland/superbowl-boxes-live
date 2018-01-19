@@ -18,3 +18,5 @@ let createGrids = () => {
   }
 }
 
+// function to crawl through the the table that uses a callback function
+
