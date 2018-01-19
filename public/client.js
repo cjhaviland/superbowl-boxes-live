@@ -4,7 +4,7 @@
 let numArray = [0,1,2,3,4,5,6,7,8,9,0];
 
 // Table Elements
-let tableCells = $('table tr td').filter(() => this.id.match()),
+let tableCells = $('td'),
 topRow = $('#row-0').children(),
 sideColumn = $('td[id$="-0"]');
 
@@ -14,7 +14,9 @@ $(function() {
 
 // function to crawl through the the table that uses a callback function
 let scanTable = (callback) => {
-  
+  for (let cell in tableCells){
+   callback(tableCells[cell]); 
+  }
 }
 
 // https://bost.ocks.org/mike/shuffle/
