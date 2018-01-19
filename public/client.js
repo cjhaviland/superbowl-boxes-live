@@ -1,8 +1,6 @@
 // client-side js
 // run by the browser each time your view template is loaded
 
-// by default, you've got jQuery,
-// add other scripts at the bottom of index.html
 let tableEl = document.querySelector('table');
 
 
@@ -14,4 +12,8 @@ $(function() {
 
 let scanTable = (callback) => {
   
+}
+
+let randomNumGen = () => {
+  return Math.floor(Math.random());
 }
