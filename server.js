@@ -8,6 +8,7 @@ let express = require('express'),
 
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
+app.use(express.static('data'));
 
 // http://expressjs.com/en/starter/basic-routing.html
 app.get("/", function (request, response) {
@@ -40,6 +41,8 @@ app.get("/scoreboard", function (req, res) {
       }
   );
 });
+
+
 
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {
