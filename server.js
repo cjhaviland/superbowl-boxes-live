@@ -8,7 +8,7 @@ let express = require('express'),
     fs = require('fs'),
     mySportsFeed = require('mysportsfeeds-node');
 
-let msf = new mySportsFeed('1.2', true);
+let msf = new mySportsFeed('1.0', true);
 
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
@@ -46,8 +46,14 @@ app.get('/scoreboard', function (req, res) {
       }
   );*/
   
-  let data = msf.getData('nfl', '2018-playoff', 'scoreboard', 'json', {});
-  res.se
+  // Authenticate
+  msf.authenticate(process.env.USERNAME, process.env.PASSWORD);
+  
+  // Get Data
+  let data = msf.getData('nfl', '2018-playoff', 'scoreboard', 'json', '20180113');
+  
+  // Send data to page
+  res.json(data);
 });
 
 app.get('/participants', function (req, res) {
