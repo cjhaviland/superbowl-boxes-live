@@ -4,7 +4,7 @@
 let numArray = [0,1,2,3,4,5,6,7,8,9,0];
 
 // Table Elements
-let tableCells = $('table tr td'),
+let tableCells = $('table tr td').filter(() => this.id.match()),
 topRow = $('#row-0').children(),
 sideColumn = $('td[id$="-0"]');
 
