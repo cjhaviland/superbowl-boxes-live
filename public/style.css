@@ -3,31 +3,33 @@
 
 body{
  display: grid; 
+  background-color: black;
+  color: white;
 }
 
 table {
- table-layout: fixed; 
+  table-layout: fixed; 
   width: 100%;
   height: 10em;
-  border: 1px solid black;
+  border: 1px solid white;
   border-collapse: collapse;
 }
 
 td {
-  border: 1px solid;
+  border: 1px solid white;
   width: calc(100%/11);
   text-align: center;
   padding-bottom: calc(100%/11)
+}
+
+td[id$="-0"] {
+  background-color: red; 
 }
 
 .table{
   width: 80vw;
 }
 
-td[id$="-1"] {
-  background-color: red; 
-}
-
-#row-1 {
+#row-0 {
  background-color: red; 
 }
