@@ -4,8 +4,9 @@
 let numArray = [0,1,2,3,4,5,6,7,8,9,0];
 
 // Full table
-let tableEl = document.querySelector('table');
-let topRow = tableEl.querySelector('');
+let tableEl = document.querySelector('table'),
+topRow = tableEl.querySelector('#row-0'),
+sideColumn = tableEl.querySelector(''); 
 
 $(function() {
   console.log(tableEl);
