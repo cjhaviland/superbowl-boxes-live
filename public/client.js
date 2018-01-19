@@ -4,10 +4,9 @@
 let numArray = [0,1,2,3,4,5,6,7,8,9,0];
 
 // Table Elements
-let tableEl = $('table'),
+let tableRows = $('table tr'),
 topRow = $('#row-0').children(),
-sideColumn = $('td[id$="-0"]'),
-cells = tableEl.children().children();
+sideColumn = $('td[id$="-0"]');
 
 $(function() {
   scanTable(log);
@@ -15,11 +14,11 @@ $(function() {
 
 // function to crawl through the the table that uses a callback function
 let scanTable = (callback) => {
-  for (let i = 0; i < cells; i++){
-    for (let j = 0; j < i; j++) {
-      callback(cells[i][j]);
-    }
-  }
+  tableRows.each((i) => {
+    $(this).children('td').each((j) => {
+      console.log(this);
+    });
+  });
 }
 
 // https://bost.ocks.org/mike/shuffle/
