@@ -16,7 +16,8 @@ let scanTable = (callback) => {
   
 }
 
-// Shuffle array to fill top and side with 0 - 9
+// https://bost.ocks.org/mike/shuffle/
+// Shuffle array O(n)
 function shuffle(array) {
   var m = array.length, t, i;
 
