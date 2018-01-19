@@ -4,7 +4,8 @@
 // init project
 let express = require('express'),
     app = express(),
-    request = require('request');
+    request = require('request'),
+    fs = require('fs');
 
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
@@ -18,7 +19,7 @@ app.get("/", function (request, response) {
 
 // https://www.mysportsfeeds.com/data-feeds/api-docs#
 // Grabbing live score updates from MySportsFeeds' scoreboard API
-app.get("/scoreboard", function (req, res) {
+app.get('/scoreboard', function (req, res) {
   let username = process.env.USERNAME,
   password = process.env.PASSWORD,
   season_name = '2018-playoff',
@@ -42,9 +43,12 @@ app.get("/scoreboard", function (req, res) {
   );
 });
 
-
+app.get('/participants', function (req, res) {
+  let contents = fs.readFileSync(__dirname + '/data/participants.json');
+  res.json(JSON.parse(contents));
+});
 
 // listen for requests :)
-var listener = app.listen(process.env.PORT, function () {
+let listener = app.listen(process.env.PORT, function () {
   console.log('Your app is listening on port ' + listener.address().port);
 });
