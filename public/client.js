@@ -9,22 +9,21 @@ topRow = $('#row-0').children(),
 sideColumn = $('td[id$="-0"]');
 
 $(function() {
-  scanTable
+  //scanTable(log);
 });
 
 // function to crawl through the the table that uses a callback function
-
 let scanTable = (callback) => {
-  for (let row in tableEl){
+  for (let row in tableEl.children().children()){
     for (let cell in row) {
-      callback(cell);
+      callback(row[cell]);
     }
   }
 }
 
 // https://bost.ocks.org/mike/shuffle/
 // Shuffle array O(n)
-function shuffle(array) {
+let shuffle = (array) => {
   var m = array.length, t, i;
 
   // While there remain elements to shuffle…
@@ -41,3 +40,5 @@ function shuffle(array) {
 
   return array;
 }
+
+let log = (c) => console.log(c);
