@@ -23,14 +23,11 @@ app.get("/", function (request, response) {
 // https://www.mysportsfeeds.com/data-feeds/api-docs#
 // Grabbing live score updates from MySportsFeeds' scoreboard API
 app.get('/scoreboard', function (req, res) {
-  /*
-  let username = process.env.USERNAME,
-  password = process.env.PASSWORD,
-  season_name = '2018-playoff',
+  let season_name = '2018-playoff',
   format = 'json',
   for_date = '20180113',
   url = 'https://api.mysportsfeeds.com/v1.1/pull/nfl/' + season_name + '/scoreboard.' + format + '?fordate=' + for_date,
-  auth = 'Basic ' + new Buffer(username+ ':' + password).toString('base64');
+  auth = 'Basic ' + new Buffer(process.env.USERNAME + ':' + process.env.PASSWORD).toString('base64');
   
   request(
       {
@@ -44,16 +41,16 @@ app.get('/scoreboard', function (req, res) {
         console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
         res.json(JSON.parse(body));
       }
-  );*/
+  );
   
   // Authenticate
-  msf.authenticate(process.env.USERNAME, process.env.PASSWORD);
+  //msf.authenticate(process.env.USERNAME, process.env.PASSWORD);
   
   // Get Data
-  let data = msf.getData('nfl', '2018-playoff', 'scoreboard', 'json', '20180113');
+  //let data = msf.getData('nfl', '2018-playoff', 'scoreboard', 'json', '20180113');
   
   // Send data to page
-  res.json(data);
+  //res.json(data);
 });
 
 app.get('/participants', function (req, res) {
