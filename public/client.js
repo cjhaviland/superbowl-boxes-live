@@ -3,19 +3,23 @@
 
 let numArray = [0,1,2,3,4,5,6,7,8,9,0];
 
-// Full table
-let tableEl = document.querySelector('table'),
-topRow = tableEl.querySelector('#row-0'),
-sideColumn = tableEl.querySelector(''); 
+// Table Elements
+let tableEl = $('table'),
+topRow = $('#row-0').children(),
+sideColumn = $('td[id$="-0"]');
 
 $(function() {
-  console.log(tableEl);
+  scanTable
 });
 
 // function to crawl through the the table that uses a callback function
 
 let scanTable = (callback) => {
-  
+  for (let row in tableEl){
+    for (let cell in row) {
+      callback(cell);
+    }
+  }
 }
 
 // https://bost.ocks.org/mike/shuffle/
