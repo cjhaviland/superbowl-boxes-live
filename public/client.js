@@ -14,6 +14,5 @@ let scanTable = (callback) => {
   
 }
 
-let randomNumGen = () => {
-  return Math.floor(Math.random());
-}
+// Shuffle array to fill top and side with 0 - 9
+
