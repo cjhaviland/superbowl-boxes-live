@@ -28,8 +28,10 @@ let fillNumCells = () => {
 };
 
 // Add participants to grid
-let fillParticipants = () => {
-  
+let fillParticipants = (cell) => {
+  if (cell.getAttribute('id') === ''){
+    cell.innerHTML = '';
+  }
 };
 
 // Just a simple log function
