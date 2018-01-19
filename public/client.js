@@ -22,6 +22,19 @@ let scanTable = (callback) => {
   }
 }
 
+// Fill the top and sides with random numbers
+let fillNumCells = () => {
+  
+};
+
+// Add participants to grid
+let fillParticipants = () => {
+  
+};
+
+// Just a simple log function
+let log = (c) => console.log(c);
+
 // https://bost.ocks.org/mike/shuffle/
 // Shuffle array O(n)
 let shuffle = (array) => {
@@ -41,16 +54,3 @@ let shuffle = (array) => {
 
   return array;
 }
-
-// Fill the top and sides with random numbers
-let fillNumCells = () => {
-  
-};
-
-// Add participants to grid
-let fillParticipants = () => {
-
-};
-
-// Just a simple log function
-let log = (c) => console.log(c);
