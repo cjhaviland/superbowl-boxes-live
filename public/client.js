@@ -11,7 +11,7 @@ let tableCells = $('td'),
 
 $(function() {
   title.on('click', () => {
-    console.log('Works!');
+    fillParticipants();
   }); // End title on click
 });
 
@@ -28,8 +28,12 @@ let fillNumCells = () => {
 };
 
 // Add participants to grid
-let fillParticipants = (cell) => {
-  $.getJSON()
+let fillParticipants = () => {
+  let participants = $.getJSON('https://spurious-relish.glitch.me/participants', function(data){
+    for (let keys in data){
+      console.log(keys + ' ' + data[keys]);
+    }
+  });
 };
 
 // Just a simple log function
