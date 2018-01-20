@@ -10,8 +10,11 @@ let tableCells = $('td'),
   title = $('h1');
 
 $(function() {
+  //init the table with participatnts object
+  fillParticipants();
+  
   title.on('click', () => {
-    fillParticipants();
+    
   }); // End title on click
 });
 
@@ -24,7 +27,15 @@ let scanTable = (callback) => {
 
 // Fill the top and sides with random numbers
 let fillNumCells = () => {
+  // First shuffle
+  shuffle(numArray);
   
+  // Slap into top row
+  
+  // Second shuffle
+  shuffle(numArray);
+  
+  // Slap into first column
 };
 
 // Add participants to grid
@@ -33,9 +44,7 @@ let fillParticipants = () => {
     // Each key, find cell in array and add name in that cell
     for (let keys in data){
       for (let cell in data[keys]){
-        console.log(keys + ' : ' + data[keys][cell]);
-        let selector = ``;
-        document.querySelector(`#box-1-1`).val(keys);
+        document.querySelector(`#box-${data[keys][cell]}`).innerHTML = keys;
       }
     }
   });
