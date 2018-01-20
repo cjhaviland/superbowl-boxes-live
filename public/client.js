@@ -1,7 +1,7 @@
 // client-side js
 // run by the browser each time your view template is loaded
 
-let numArray = [0,1,2,3,4,5,6,7,8,9,0];
+let numArray = [0,1,2,3,4,5,6,7,8,9];
 
 // Table Elements
 let tableCells = $('td'),
@@ -15,26 +15,9 @@ $(function() {
   
   title.on('click', () => {
     fillNumCells(topRow);
+    fillNumCells(sideColumn);
   }); // End title on click
 });
-
-// function to crawl through the the table that uses a callback function
-let scanTable = (callback) => {
-  for (let i = 0; i < tableCells.length; i++){
-   callback(tableCells[i]); 
-  }
-}
-
-// Fill the top and sides with random numbers
-let fillNumCells = (cells) => {
-  // First shuffle
-  shuffle(numArray);
-  
-  // Slap into top row
-  for (let cell in cells){
-    cells[cell].innerHTML = numArray[cell];
-  }
-};
 
 // Add participants to grid
 let fillParticipants = () => {
@@ -48,8 +31,16 @@ let fillParticipants = () => {
   });
 };
 
-// Just a simple log function
-let log = (c) => console.log(c);
+// Fill the top and sides with random numbers
+let fillNumCells = (cells) => {
+  // shuffle the array
+  shuffle(numArray);
+  
+  // Slap into table
+  for (let i = 1; i < cells.length; i++){
+    cells[i].innerHTML = numArray[i - 1];
+  }
+};
 
 // https://bost.ocks.org/mike/shuffle/
 // Shuffle array O(n)
@@ -70,3 +61,13 @@ let shuffle = (array) => {
 
   return array;
 }
+
+// function to crawl through the the table that uses a callback function
+let scanTable = (callback) => {
+  for (let i = 0; i < tableCells.length; i++){
+   callback(tableCells[i]); 
+  }
+}
+
+// Just a simple log function
+let log = (c) => console.log(c);
