@@ -5,7 +5,7 @@ let numArray = [0,1,2,3,4,5,6,7,8,9,0];
 
 // Table Elements
 let tableCells = $('td'),
-  topRow = $('#row-0').children(),
+  topRow = document.querySelector('#row-0').querySelectorAll('td'),
   sideColumn = $('td[id$="-0"]'),
   title = $('h1');
 
@@ -14,7 +14,7 @@ $(function() {
   fillParticipants();
   
   title.on('click', () => {
-    
+    fillNumCells(topRow);
   }); // End title on click
 });
 
@@ -26,16 +26,14 @@ let scanTable = (callback) => {
 }
 
 // Fill the top and sides with random numbers
-let fillNumCells = () => {
+let fillNumCells = (cells) => {
   // First shuffle
   shuffle(numArray);
   
   // Slap into top row
-  
-  // Second shuffle
-  shuffle(numArray);
-  
-  // Slap into first column
+  for (let cell in cells){
+    cells[cell].innerHTML = numArray[cell];
+  }
 };
 
 // Add participants to grid
