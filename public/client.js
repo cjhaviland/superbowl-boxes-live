@@ -29,9 +29,11 @@ let fillNumCells = () => {
 
 // Add participants to grid
 let fillParticipants = () => {
-  let participants = $.getJSON('https://spurious-relish.glitch.me/participants', function(data){
+  $.getJSON('https://spurious-relish.glitch.me/participants', function(data){
+    // Each key, find cell in array and add name in that cell
     for (let keys in data){
       console.log(keys + ' ' + data[keys]);
+      
     }
   });
 };
