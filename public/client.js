@@ -34,6 +34,8 @@ let fillParticipants = () => {
     for (let keys in data){
       for (let cell in data[keys]){
         console.log(keys + ' : ' + data[keys][cell]);
+        let selector = ``;
+        document.querySelector(`#box-1-1`).val(keys);
       }
     }
   });
