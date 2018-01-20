@@ -32,8 +32,9 @@ let fillParticipants = () => {
   $.getJSON('https://spurious-relish.glitch.me/participants', function(data){
     // Each key, find cell in array and add name in that cell
     for (let keys in data){
-      console.log(keys + ' ' + data[keys]);
-      
+      for (let cell in data[keys]){
+        console.log(keys + ' : ' + data[keys][cell]);
+      }
     }
   });
 };
