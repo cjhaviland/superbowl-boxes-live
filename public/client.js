@@ -29,9 +29,7 @@ let fillNumCells = () => {
 
 // Add participants to grid
 let fillParticipants = (cell) => {
-  if (cell.getAttribute('id') === ''){
-    cell.innerHTML = '';
-  }
+  $.getJSON()
 };
 
 // Just a simple log function
