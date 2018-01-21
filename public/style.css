@@ -30,6 +30,10 @@ td[id$="-0"] {
   height: 80vh;
 }
 
+.scores {
+  width: 300px;
+}
+
 #row-0 {
  background-color: red; 
 }
