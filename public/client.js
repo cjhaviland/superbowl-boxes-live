@@ -9,7 +9,8 @@ let scoreObj = {};
 let tableCells = $('td'),
   topRow = document.querySelector('#row-0').querySelectorAll('td'),
   sideColumn = $('td[id$="-0"]'),
-  title = $('h1');
+  title = $('h1'),
+  scoreboard = $('#scoreboard-grid');
 
 // After DOM Load
 $(function() {
@@ -44,8 +45,10 @@ let fillParticipants = () => {
 };
 
 // Updates the scorebox
-let updateScores = () => {
-  
+let updateScores = (obj) => {
+  if (scoreObj.scoreboard.gameScore[0].isInProgress) {
+    
+  }
 }
 
 // Scoreboard API
