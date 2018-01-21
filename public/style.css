@@ -30,7 +30,7 @@ td[id$="-0"] {
   height: 80vh;
 }
 
-.scores {
+#scoreboard-grid {
   width: 300px;
 }
 
