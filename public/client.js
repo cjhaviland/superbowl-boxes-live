@@ -10,7 +10,8 @@ let tableCells = $('td'),
   topRow = document.querySelector('#row-0').querySelectorAll('td'),
   sideColumn = $('td[id$="-0"]'),
   title = $('h1'),
-  scoreboard = $('#scoreboard-grid');
+  awayScoreboard = document.querySelector('#away-team'),
+  homeScoreboard = document.querySelector('#home-team');
 
 // After DOM Load
 $(function() {
@@ -46,8 +47,8 @@ let fillParticipants = () => {
 
 // Updates the scorebox
 let updateScores = (obj) => {
-  if (scoreObj.scoreboard.gameScore[0].isInProgress) {
-    
+  if (scoreObj.scoreboard.gameScore[0].isInProgress !== 'false') {
+    console.log('Game on!');
   }
 }
 
@@ -56,6 +57,8 @@ let scoreboardApi = () => {
   $.getJSON('https://spurious-relish.glitch.me/scoreboard', function(data){
     scoreObj = data;
   });
+  
+  updateScores(scoreObj);
 }
 
 // Fill the top and sides with random numbers
