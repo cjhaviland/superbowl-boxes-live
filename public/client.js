@@ -45,20 +45,22 @@ let fillParticipants = () => {
   });
 };
 
-// Updates the scorebox
-let updateScores = (obj) => {
-  if (scoreObj.scoreboard.gameScore[0].isInProgress !== 'false') {
-    console.log('Game on!');
-  }
-}
-
 // Scoreboard API
 let scoreboardApi = () => {
   $.getJSON('https://spurious-relish.glitch.me/scoreboard', function(data){
     scoreObj = data;
+  })
+  .done(() => {
+    updateScores();
   });
-  
-  updateScores(scoreObj);
+}
+
+// Updates the scorebox
+let updateScores = () => {
+
+  if (scoreObj.scoreboard.gameScore[1].isInProgress != 'false') {
+    console.log('Game on!');
+  }
 }
 
 // Fill the top and sides with random numbers
