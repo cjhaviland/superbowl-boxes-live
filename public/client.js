@@ -3,12 +3,15 @@
 
 let numArray = [0,1,2,3,4,5,6,7,8,9];
 
+let scoreObj = {};
+
 // Table Elements
 let tableCells = $('td'),
   topRow = document.querySelector('#row-0').querySelectorAll('td'),
   sideColumn = $('td[id$="-0"]'),
   title = $('h1');
 
+// After DOM Load
 $(function() {
   //init the table with participatnts object
   fillParticipants();
@@ -17,7 +20,16 @@ $(function() {
     fillNumCells(topRow);
     fillNumCells(sideColumn);
   }); // End title on click
-});
+  
+  // Run once on load
+  scoreboardApi();
+  
+  // Every 10 mins refresh API data
+  setInterval(() => {
+    scoreboardApi();
+  }, 600000);
+}); // on ready function
+
 
 // Add participants to grid
 let fillParticipants = () => {
@@ -30,6 +42,18 @@ let fillParticipants = () => {
     }
   });
 };
+
+// Updates the scorebox
+let updateScores = () => {
+  
+}
+
+// Scoreboard API
+let scoreboardApi = () => {
+  $.getJSON('https://spurious-relish.glitch.me/scoreboard', function(data){
+    scoreObj = data;
+  });
+}
 
 // Fill the top and sides with random numbers
 let fillNumCells = (cells) => {
