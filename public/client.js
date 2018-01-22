@@ -3,8 +3,6 @@
 
 let numArray = [0,1,2,3,4,5,6,7,8,9];
 let scoreObj = {};
-let awayScore = 0;
-let homeScore = 0;
 
 // Table Elements
 let tableCells = $('td'),
@@ -59,6 +57,9 @@ let scoreboardApi = () => {
 
 // Updates the scorebox
 let updateScores = () => {
+  let awayScore = 0;
+  let homeScore = 0;
+  
   awayScoreboard[0].innerHTML = scoreObj.scoreboard.gameScore[0].game.awayTeam.Abbreviation;
   homeScoreboard[0].innerHTML = scoreObj.scoreboard.gameScore[0].game.homeTeam.Abbreviation;
   
@@ -67,11 +68,11 @@ let updateScores = () => {
     
     for (let i = 0; i < quarters.length; i++){
       // @number, awayScore, homeScore
-      awayScore +=  parseInt(quarters[0].awayScore);
-      homeScore +=  parseInt(quarters[0].homeScore);
+      awayScore +=  parseInt(quarters[i].awayScore);
+      homeScore +=  parseInt(quarters[i].homeScore);
       
-      awayScoreboard[`${quarters[0]["@number"]}`].innerHTML = awayScore;
-      homeScoreboard[`${quarters[0]["@number"]}`].innerHTML = homeScore;
+      awayScoreboard[`${quarters[i]["@number"]}`].innerHTML = awayScore;
+      homeScoreboard[`${quarters[i]["@number"]}`].innerHTML = homeScore;
     }
   }
 }// end updateScores

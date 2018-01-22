@@ -37,3 +37,7 @@ td[id$="-0"] {
 #row-0 {
  background-color: red; 
 }
+
+.winner {
+  background-color: blue;
+}
