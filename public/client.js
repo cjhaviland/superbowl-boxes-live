@@ -2,8 +2,9 @@
 // run by the browser each time your view template is loaded
 
 let numArray = [0,1,2,3,4,5,6,7,8,9];
-
 let scoreObj = {};
+let awayScore = 0;
+let homeScore = 0;
 
 // Table Elements
 let tableCells = $('td'),
@@ -65,7 +66,11 @@ let updateScores = () => {
     
     for (let i = 0; i < quarters.length; i++){
       // @number, awayScore, homeScore
-      awayScoreboard[
+      awayScore +=  quarters[0].awayScore;
+      homeScore +=  quarters[0].homeScore;
+      
+      awayScoreboard[`${quarters[0]["@number"]}`].innerHTML = awayScore;
+      homeScoreboard[`${quarters[0]["@number"]}`].innerHTML = homeScore;
     }
   }
 }
