@@ -79,7 +79,11 @@ let updateScores = () => {
 
 // Update Grid with Winners
 let updateWinners = () => {
-  
+  for (let i = 1; i < 6; i++){
+    if (i = 1){
+      
+    }
+  }
 } //end updateWinners
 
 // Fill the top and sides with random numbers
