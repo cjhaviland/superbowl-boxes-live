@@ -45,7 +45,7 @@ let fillParticipants = () => {
       }
     }
   });
-};
+}; // end fillParticipants
 
 // Scoreboard API
 let scoreboardApi = () => {
@@ -55,7 +55,7 @@ let scoreboardApi = () => {
   .done(() => {
     updateScores();
   });
-}
+} // end scoreboardApi
 
 // Updates the scorebox
 let updateScores = () => {
@@ -74,7 +74,12 @@ let updateScores = () => {
       homeScoreboard[`${quarters[0]["@number"]}`].innerHTML = homeScore;
     }
   }
-}
+}// end updateScores
+
+// Update Grid with Winners
+let updateWinners = () => {
+  
+} //end updateWinners
 
 // Fill the top and sides with random numbers
 let fillNumCells = (cells) => {
@@ -85,7 +90,7 @@ let fillNumCells = (cells) => {
   for (let i = 1; i < cells.length; i++){
     cells[i].innerHTML = numArray[i - 1];
   }
-};
+} //end fillNumCells
 
 // https://bost.ocks.org/mike/shuffle/
 // Shuffle array O(n)
@@ -105,7 +110,7 @@ let shuffle = (array) => {
   }
 
   return array;
-}
+} //end shuffle
 
 // function to crawl through the the table that uses a callback function
 let scanTable = (callback) => {
