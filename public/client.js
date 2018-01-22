@@ -80,13 +80,16 @@ let updateScores = () => {
 
 // Update Grid with Winners
 let updateWinners = () => {
-  for (let i = 1; i < 6; i++){
+  for (let i = 1; i < 5; i++){
     let away = awayScoreboard[i].innerHTML;
     let home = homeScoreboard[i].innerHTML;
     
+    let awayRow = document.querySelector(`#row-0 [data-scorenum='${parseInt(away) % 10}']`).dataset.num;
+    let homeCol = document.querySelector(`td[id$='-0'][data-scorenum='${parseInt(home) % 10}']`).dataset.num;
+    
     if (away != '' && home != ''){
-      document.querySelector(`#row-0 [data-num='1']`).dataset.num
-      document.querySelector(`td[id$='-0'][data-num='1']`).dataset.num
+      $(`#box-${awayRow}-${homeCol}`).addClass('winner');
+      console.log(`#box-${awayRow}-${homeCol}`);
     }
   }
 } //end updateWinners
