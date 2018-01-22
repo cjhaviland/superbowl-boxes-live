@@ -18,10 +18,11 @@ let tableCells = $('td'),
 $(function() {
   //init the table with participatnts object
   fillParticipants();
+  fillNumCells(topRow);
+  fillNumCells(sideColumn);
   
   title.on('click', () => {
-    fillNumCells(topRow);
-    fillNumCells(sideColumn);
+    
   }); // End title on click
   
   // Run once on load
@@ -66,8 +67,8 @@ let updateScores = () => {
     
     for (let i = 0; i < quarters.length; i++){
       // @number, awayScore, homeScore
-      awayScore +=  quarters[0].awayScore;
-      homeScore +=  quarters[0].homeScore;
+      awayScore +=  parseInt(quarters[0].awayScore);
+      homeScore +=  parseInt(quarters[0].homeScore);
       
       awayScoreboard[`${quarters[0]["@number"]}`].innerHTML = awayScore;
       homeScoreboard[`${quarters[0]["@number"]}`].innerHTML = homeScore;
