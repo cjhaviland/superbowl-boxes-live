@@ -52,6 +52,7 @@ let scoreboardApi = () => {
   })
   .done(() => {
     updateScores();
+    updateWinners();
   });
 } // end scoreboardApi
 
@@ -80,8 +81,11 @@ let updateScores = () => {
 // Update Grid with Winners
 let updateWinners = () => {
   for (let i = 1; i < 6; i++){
-    if (awayScoreboard[i].innerHTML != '' && homeScoreboard[i].innerHTML != ''){
-      $(`#box-1-3`).addClass('winner');
+    let away = awayScoreboard[i].innerHTML;
+    let home = homeScoreboard[i].innerHTML;
+    
+    if (away != '' && home != ''){
+      $(`#box-${parseInt(away) % 10}-${parseInt(home) % 10}`).addClass('winner');
     }
   }
 } //end updateWinners
