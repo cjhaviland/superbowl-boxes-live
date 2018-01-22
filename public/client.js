@@ -20,11 +20,11 @@ $(function() {
   fillNumCells(sideColumn);
   
   title.on('click', () => {
-    
+     
   }); // End title on click
   
   // Run once on load
-  scoreboardApi();
+  scoreboardApi();   
   
   // Every 10 mins refresh API data
   setInterval(() => {
@@ -89,7 +89,7 @@ let updateWinners = () => {
     
     if (away != '' && home != ''){
       $(`#box-${awayRow}-${homeCol}`).addClass('winner');
-      console.log(`#box-${awayRow}-${homeCol}`);
+      console.log(`#box-${awayRow}-${homeCol} ${parseInt(away) % 10} ${parseInt(home) % 10}`);
     }
   }
 } //end updateWinners
