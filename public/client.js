@@ -60,8 +60,8 @@ let updateScores = () => {
   let awayScore = 0;
   let homeScore = 0;
   
-  awayScoreboard[0].innerHTML = scoreObj.scoreboard.gameScore[0].game.awayTeam.Abbreviation;
-  homeScoreboard[0].innerHTML = scoreObj.scoreboard.gameScore[0].game.homeTeam.Abbreviation;
+  awayScoreboard[0].innerHTML = scoreObj.scoreboard.gameScore[1].game.awayTeam.Abbreviation;
+  homeScoreboard[0].innerHTML = scoreObj.scoreboard.gameScore[1].game.homeTeam.Abbreviation;
   
   if (scoreObj.scoreboard.gameScore[1].isInProgress != 'false') {
     let quarters = scoreObj.scoreboard.gameScore[1].quarterSummary.quarter;
@@ -80,8 +80,8 @@ let updateScores = () => {
 // Update Grid with Winners
 let updateWinners = () => {
   for (let i = 1; i < 6; i++){
-    if (i = 1){
-      
+    if (awayScoreboard[i].innerHTML != '' && homeScoreboard[i].innerHTML != ''){
+      $(`#box-1-3`).addClass('winner');
     }
   }
 } //end updateWinners
