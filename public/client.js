@@ -98,6 +98,7 @@ let fillNumCells = (cells) => {
   // Slap into table
   for (let i = 1; i < cells.length; i++){
     cells[i].innerHTML = numArray[i - 1];
+    cells[i].dataset.num = numArray[i - 1];
   }
 } //end fillNumCells
 
