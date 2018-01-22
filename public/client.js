@@ -64,7 +64,7 @@ let updateScores = () => {
   awayScoreboard[0].innerHTML = scoreObj.scoreboard.gameScore[1].game.awayTeam.Abbreviation;
   homeScoreboard[0].innerHTML = scoreObj.scoreboard.gameScore[1].game.homeTeam.Abbreviation;
   
-  if (scoreObj.scoreboard.gameScore[1].isInProgress != 'false') {
+  if (scoreObj.scoreboard.gameScore[1].isInProgress != 'false' || scoreObj.scoreboard.gameScore[1].isComp != 'true') {
     let quarters = scoreObj.scoreboard.gameScore[1].quarterSummary.quarter;
     
     for (let i = 0; i < quarters.length; i++){
@@ -88,8 +88,8 @@ let updateWinners = () => {
     let homeCol = document.querySelector(`td[id$='-0'][data-scorenum='${parseInt(home) % 10}']`).dataset.num;
     
     if (away != '' && home != ''){
-      $(`#box-${awayRow}-${homeCol}`).addClass('winner');
-      console.log(`#box-${awayRow}-${homeCol} ${parseInt(away) % 10} ${parseInt(home) % 10}`);
+      $(`#box-${homeCol}-${awayRow}`).addClass('winner');
+      console.log(`#box-${homeCol}-${awayRow} ${parseInt(away) % 10} ${parseInt(home) % 10}`);
     }
   }
 } //end updateWinners
@@ -103,7 +103,7 @@ let fillNumCells = (cells) => {
   for (let i = 1; i < cells.length; i++){
     cells[i].innerHTML = numArray[i - 1];
     cells[i].dataset.scorenum = numArray[i - 1];
-    cells[i].dataset.num = i;
+    cells[i].dataset.num = i - 1;
   }
 } //end fillNumCells
 
