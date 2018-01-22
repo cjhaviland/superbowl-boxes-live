@@ -85,7 +85,8 @@ let updateWinners = () => {
     let home = homeScoreboard[i].innerHTML;
     
     if (away != '' && home != ''){
-      $(`#box-${parseInt(away) % 10}-${parseInt(home) % 10}`).addClass('winner');
+      document.querySelector(`#row-0 [data-num='1']`).dataset.num
+      document.querySelector(`td[id$='-0'][data-num='1']`).dataset.num
     }
   }
 } //end updateWinners
