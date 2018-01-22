@@ -10,8 +10,8 @@ let tableCells = $('td'),
   topRow = document.querySelector('#row-0').querySelectorAll('td'),
   sideColumn = $('td[id$="-0"]'),
   title = $('h1'),
-  awayScoreboard = document.querySelector('#away-team'),
-  homeScoreboard = document.querySelector('#home-team');
+  awayScoreboard = document.querySelector('#away-team').getElementsByTagName('td'),
+  homeScoreboard = document.querySelector('#home-team').getElementsByTagName('td');
 
 // After DOM Load
 $(function() {
@@ -57,9 +57,16 @@ let scoreboardApi = () => {
 
 // Updates the scorebox
 let updateScores = () => {
-
+  awayScoreboard[0].innerHTML = scoreObj.scoreboard.gameScore[0].game.awayTeam.Abbreviation;
+  homeScoreboard[0].innerHTML = scoreObj.scoreboard.gameScore[0].game.homeTeam.Abbreviation;
+  
   if (scoreObj.scoreboard.gameScore[1].isInProgress != 'false') {
-    console.log('Game on!');
+    let quarters = scoreObj.scoreboard.gameScore[1].quarterSummary.quarter;
+    
+    for (let i = 0; i < quarters.length; i++){
+      // @number, awayScore, homeScore
+      awayScoreboard[
+    }
   }
 }
 
