@@ -54,6 +54,7 @@ h1 {
 
 #lastUpdated {
   font-size: 1vw !important;
+  margin-top: 1vh;
 }
 
 .center {
@@ -92,7 +93,7 @@ h1 {
   margin: auto;
   grid-area: a;
   transform: rotate(270deg);
-
+  width: 2em;
 }
 
 .home-team-logo{
@@ -114,6 +115,11 @@ h1 {
 }
 
 .superbowl-pool-grid td {
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 1.5vh;
+  padding-bottom: 1.5vh;
+}
+
+/* Highlighting Classes for Winners and Other */
+.highlight {
+  background-color: #4f2134
 }
