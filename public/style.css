@@ -1,34 +1,43 @@
 /* styles */
 /* called by your view template */
-/*https://cssgrid.cc/css-grid-builder.html#get-grid-builder*/
+/*
+https://cssgrid.cc/css-grid-builder.html#get-grid-builder*
+
+https://scrimba.com/p/pWqLHa/cbVn4t4
+*/
 
 body{
  display: grid; 
-  background-color: black;
-  color: white;
+  color: black;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.5vw;
 }
 
 table {
-  table-layout: fixed; 
   width: 100%;
-  border: 1px solid white;
+  border: 1px solid black;
   border-collapse: collapse;
+  box-shadow: 5px 5px 5px grey;
 }
 
 td {
-  border: 1px solid white;
+  border: 1px solid black;
   width: calc(100%/11);
   text-align: center;
-  padding-bottom: 30px;
 }
 
 td[id$="-0"] {
-  background-color: red; 
+  background-color: gray; 
 }
 
-.table{
-  width: 80vw;
-  height: 80vh;
+h1 {
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 6.5vw
+}
+
+.winner {
+  background-color: blue;
 }
 
 #scoreboard-grid {
@@ -36,9 +45,75 @@ td[id$="-0"] {
 }
 
 #row-0 {
- background-color: red; 
+ background-color: gray; 
 }
 
-.winner {
-  background-color: blue;
+#box-0-0 {
+  background-color: white;
+}
+
+#lastUpdated {
+  font-size: 1vw !important;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper{
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(12/ 1fr);
+  grid-template-rows: auto 8vh auto;
+  margin-right: 25px;
+  grid-template-areas: 
+        ". s s s s s s s s s s s"
+        ". h h h h h h h h h h h"
+        "a g g g g g g g g g g g";
+}
+
+
+.scoreboard{
+  margin-left: auto;
+  margin-right: auto;
+  grid-area: s;
+}
+
+.scoreboard th{
+  padding: 0px;
+}
+
+.away-team-logo{
+  font-family: 'Merriweather', serif;
+  text-transform: uppercase;
+  font-size: 3.5vw;
+  margin: auto;
+  grid-area: a;
+  transform: rotate(270deg);
+
+}
+
+.home-team-logo{
+  font-family: 'Coda', cursive;
+  text-transform: uppercase;
+  font-size: 3.5vw;
+  grid-area: h;
+
+}
+
+.superbowl-pool-grid{
+  background-color: white;
+  grid-area: g;
+
+}
+
+.superbowl-pool-grid table {
+  table-layout: fixed; 
+}
+
+.superbowl-pool-grid td {
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
