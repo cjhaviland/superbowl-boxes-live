@@ -10,23 +10,23 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Welcome to Glitch!</title>
-    <meta name="description" content="A cool thing made with Glitch">
-    <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
+    <title>Super Bowl Pool Boxes</title>
+    <meta name="description" content="Super Bowl Box Auto Updater">
+    <link id="favicon" rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/PICOL_icon_Football.svg/2000px-PICOL_icon_Football.svg.png" type="image/x-icon">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Coda:800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Coda:800|Merriweather:900" rel="stylesheet">
   </head>
   <body>
-    <header>
-      <h1>
-        Super Bowl Boxes
-      </h1>
-    </header>
-
-    <main>
-      <div id="scoreboard-grid">
+    <h1>
+      Super Bowl Pool Boxes
+    </h1>
+    <div class="wrapper">
+      <div class="scoreboard" id="scoreboard-grid">
         <table>
           <thead>
             <tr>
@@ -60,14 +60,17 @@
             </tr>
           </tbody>
         </table>
+        <span class="center" id="lastUpdated">
+          Last Updated:
+        </span>
       </div>
       
-      <div id="away">Away</div>
+      <div class="away-team-logo center">Away</div>
       
-      <div id="home">Home</div>
+      <div class="home-team-logo center">Home</div>
       
-      <div class="table">
-        <table class="superbowl-pool-grid">
+      <div class="superbowl-pool-grid">
+        <table class="table">
           <tbody>
             <tr id="row-0">
               <td id="box-0-0">&nbsp;</td>
@@ -215,11 +218,7 @@
           </tbody>
         </table>
       </div>
-    </main>
-
-    <footer>
-      
-    </footer>
+    </div>
 
     <!-- Your web-app is https, so your scripts need to be too -->
     <script src="https://code.jquery.com/jquery-2.2.1.min.js"

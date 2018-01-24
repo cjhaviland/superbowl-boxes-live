@@ -23,10 +23,10 @@ app.get("/", function (request, response) {
 // https://www.mysportsfeeds.com/data-feeds/api-docs#
 // Grabbing live score updates from MySportsFeeds' scoreboard API
 app.get('/scoreboard', function (req, res) {
-  let season_name = '2018-playoff',
+  let season_name = 'current',
   format = 'json',
-  for_date = '20180121',
-  url = 'https://api.mysportsfeeds.com/v1.1/pull/nfl/' + season_name + '/scoreboard.' + format + '?fordate=' + for_date,
+  for_date = '20180204',
+  url = 'https://api.mysportsfeeds.com/v1.1/pull/nfl/' + season_name + '/scoreboard.' + format + '?fordate=' + for_date,    
   auth = 'Basic ' + new Buffer(process.env.USERNAME + ':' + process.env.PASSWORD).toString('base64');
   
   request(
