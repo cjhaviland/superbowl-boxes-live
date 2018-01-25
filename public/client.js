@@ -10,13 +10,13 @@
 
 //let numArray = [0,1,2,3,4,5,6,7,8,9];
 let scoreObj = {};
-//let awayArray = [9,8,7,4,3,2,1,0,5,6]
-//let homeArray = [3,0,2,5,6,4,8,7,1,9]
+let awayHomeArray = [[9,8,7,4,3,2,1,0,5,6], [3,0,2,5,6,4,8,7,1,9]]
 let timeout;
 let lastUpdated;
 
-let awayArray = [1,2,3,4,5,6,7,8,9,10];
-let homeArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
+//let awayHomeArray = [[1,2,3,4,5,6,7,8,9,10], ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']]
+
+
 
 // Table Elements
 let tableCells = $('td'),
@@ -24,16 +24,21 @@ let tableCells = $('td'),
   sideColumn = $('td[id$="-0"]'), //home
   title = $('h1');
 
+
+
 // scoreboard elements
 let awayScoreboard = document.querySelector('#away-team').getElementsByTagName('td'),
   homeScoreboard = document.querySelector('#home-team').getElementsByTagName('td');
+
+
 
 // After DOM Load
 $(function() {
   //init the table with participatnts object
   fillParticipants();
-  fillNumCells(topRow, awayArray);
-  fillNumCells(sideColumn, homeArray);
+  
+  fillNumCells(topRow, awayHomeArray[0]);
+  fillNumCells(sideColumn, awayHomeArray[1]);
   
   // Every 5 mins refresh API data
   timeout = setTimeout(function(){
@@ -49,6 +54,8 @@ $(function() {
  }); // end hover listener 
   
 }); // end on ready function
+
+
 
 
 // Add participants to grid
@@ -83,6 +90,8 @@ let scoreboardApi = () => {
   });
 } // end scoreboardApi
 
+
+
 // Updates the scorebox
 let updateScores = () => {
   let awayScore = 0;
@@ -105,20 +114,21 @@ let updateScores = () => {
     
     for (let i = 0; i < quarters.length; i++){
       // @number, awayScore, homeScore
+      let currQuarter = quarters[i]["@number"];
       awayScore +=  parseInt(quarters[i].awayScore);
       homeScore +=  parseInt(quarters[i].homeScore);
       
       // Quarter Scores
-      awayScoreboard[`${quarters[i]["@number"]}`].innerHTML = quarters[i].awayScore;
-      homeScoreboard[`${quarters[i]["@number"]}`].innerHTML = quarters[i].homeScore;
+      awayScoreboard[currQuarter].innerHTML = awayScore;
+      homeScoreboard[currQuarter].innerHTML = homeScore;
       
       // Update Total Score
       awayScoreboard[6].innerHTML = awayScore;
       homeScoreboard[6].innerHTML = homeScore;
+      
+      // Update that quarters winner
+      updateWinner(awayScore, homeScore, currQuarter);
     }
-    
-    // Update the winners
-    updateWinners();
   }
   
   if (awayScoreboard[5].innerHTML == '' && homeScoreboard[5].innerHTML == ''){
@@ -127,25 +137,33 @@ let updateScores = () => {
   
 }// end updateScores
 
+
+
 // Update Grid with Winners
-let updateWinners = () => {
-  let away = 0;
-  let home = 0;
+let updateWinner= (a, h, q) => {
+  // Find row and column from the last digit of the current quarters score
+  let homeRow = document.querySelector(`#row-0 [data-scorenum="${h % 10}"]`).dataset.num;
+  let awayCol = document.querySelector(`td[id$='-0'][data-scorenum="${a % 10}"]`).dataset.num;
   
-  for (let i = 1; i < 5; i++){
-    away += parseInt(awayScoreboard[i].innerHTML);
-    home += parseInt(homeScoreboard[i].innerHTML);
-    
-    let awayRow = document.querySelector(`#row-0 [data-scorenum='${parseInt(away) % 10}']`).dataset.num;
-    let homeCol = document.querySelector(`td[id$='-0'][data-scorenum='${parseInt(home) % 10}']`).dataset.num;
-    
-    // Need to re-write this for the separate quarters
-    if (away != '' && home != ''){
-      $(`#box-${homeCol}-${awayRow}`).addClass('winner');
-      console.log(`#box-${homeCol}-${awayRow} ${parseInt(away) % 10} ${parseInt(home) % 10}`);
-    }
+  // Find the box with the winner for the current quarter
+  let winner = $(`#box-${awayCol}-${homeRow}`);
+  
+  // If the current Q is OT (5) then wipe out the 4th Q and move the winner to OT box
+  console.log(q);
+  if (q == 5){
+    $(`#winner-4`).text('');
+    $(`#winner-${q}`).text(winner.text());
   }
-} //end updateWinners
+  else {
+    // Slap winners name in the score grid
+    $(`#winner-${q}`).text(winner.text());
+  }
+  
+  // Might change this up...
+  //winner.addClass('winner');
+}
+
+
 
 // Fill the top and sides with random numbers
 let fillNumCells = (cells, array) => {
@@ -159,6 +177,9 @@ let fillNumCells = (cells, array) => {
     cells[i].dataset.num = i;
   }
 } //end fillNumCells
+
+
+
 
 // https://bost.ocks.org/mike/shuffle/
 // Shuffle array O(n)
