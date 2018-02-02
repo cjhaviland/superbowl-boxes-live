@@ -4,27 +4,21 @@
 // Stuff to add
 /*
  * Probability Styling: http://media1.break.com/dnet/media/2013/2/1/c77fc888-97a3-433d-85da-c8c088a43204.jpg
- * Winner styling/grid
 */
-
 
 //let numArray = [0,1,2,3,4,5,6,7,8,9];
 let scoreObj = {};
-let awayHomeArray = [[9,8,7,4,3,2,1,0,5,6], [3,0,2,5,6,4,8,7,1,9]]
 let timeout;
 let lastUpdated;
-
+let awayHomeArray = [[9,3,4,0,5,1,6,8,2,7], [2,8,7,0,3,5,9,6,1,4]]
 //let awayHomeArray = [[1,2,3,4,5,6,7,8,9,10], ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']]
-
-
+let boxCount = 0;
 
 // Table Elements
 let tableCells = $('td'),
   topRow = document.querySelector('#row-0').querySelectorAll('td'), //away
   sideColumn = $('td[id$="-0"]'), //home
   title = $('h1');
-
-
 
 // scoreboard elements
 let awayScoreboard = document.querySelector('#away-team').getElementsByTagName('td'),
@@ -53,6 +47,9 @@ $(function() {
    $(`td:contains(${ $(this).html() })`).toggleClass('highlight');
  }); // end hover listener 
   
+  $('#box-0-0').on('click', function(){
+    $(`td:contains(${String.fromCharCode(160)})`).toggleClass('highlight');
+  });
 }); // end on ready function
 
 
@@ -67,6 +64,15 @@ let fillParticipants = () => {
         document.querySelector(`#box-${data[keys][cell]}`).innerHTML = keys;
       }
     }
+  })
+  .done(() => {
+    $('.superbowl-pool-grid td:gt(10)').each((i, e) => {
+      if(e.innerHTML == '&nbsp;'){
+        boxCount++;
+      }
+    });
+  
+    console.log(`There are ${boxCount} boxes left`);
   });
 }; // end fillParticipants
 
@@ -119,8 +125,8 @@ let updateScores = () => {
       homeScore +=  parseInt(quarters[i].homeScore);
       
       // Quarter Scores
-      awayScoreboard[currQuarter].innerHTML = awayScore;
-      homeScoreboard[currQuarter].innerHTML = homeScore;
+      awayScoreboard[currQuarter].innerHTML = quarters[i].awayScore;
+      homeScoreboard[currQuarter].innerHTML = quarters[i].homeScore;
       
       // Update Total Score
       awayScoreboard[6].innerHTML = awayScore;
@@ -131,10 +137,10 @@ let updateScores = () => {
     }
   }
   
+  // Hide OT if it doesn't exist
   if (awayScoreboard[5].innerHTML == '' && homeScoreboard[5].innerHTML == ''){
     $('#scoreboard-grid td:nth-child(6), th:nth-child(6)').hide();
   }
-  
 }// end updateScores
 
 
@@ -175,9 +181,9 @@ let fillNumCells = (cells, array) => {
     cells[i].innerHTML = array[i - 1];
     cells[i].dataset.scorenum = array[i - 1];
     cells[i].dataset.num = i;
+    cells[i].dataset.odds = i;
   }
 } //end fillNumCells
-
 
 
 

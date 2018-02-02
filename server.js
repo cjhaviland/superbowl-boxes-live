@@ -6,7 +6,8 @@ let express = require('express'),
     app = express(),
     request = require('request'),
     fs = require('fs'),
-    mySportsFeed = require('mysportsfeeds-node');
+    mySportsFeed = require('mysportsfeeds-node'),
+    jsonfile = require('jsonfile');
 
 let msf = new mySportsFeed('1.0', true);
 
@@ -26,7 +27,7 @@ app.get('/scoreboard', function (req, res) {
   let season_name = 'current',
   format = 'json',
   for_date = '20180204',
-  url = 'https://api.mysportsfeeds.com/v1.1/pull/nfl/' + season_name + '/scoreboard.' + format + '?fordate=' + for_date,    
+  url = 'https://api.mysportsfeeds.com/v1.1/pull/nfl/' + season_name + '/scoreboard.' + format + '?fordate=' + for_date,
   auth = 'Basic ' + new Buffer(process.env.USERNAME + ':' + process.env.PASSWORD).toString('base64');
   
   request(
@@ -56,6 +57,11 @@ app.get('/scoreboard', function (req, res) {
 app.get('/participants', function (req, res) {
   let contents = fs.readFileSync(__dirname + '/data/participants.json');
   res.json(JSON.parse(contents));
+});
+
+app.get('/test', function (req, res) {
+  let testObj = fs.readFileSync(__dirname + '/data/testobj.json');
+  res.json(JSON.parse(testObj));
 });
 
 // listen for requests :)

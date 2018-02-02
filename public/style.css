@@ -77,14 +77,19 @@ h1 {
 
 
 .scoreboard{
+  display: inline-table;
   margin-left: auto;
   margin-right: auto;
   grid-area: s;
 }
 
-.scoreboard th{
-  padding: 0px;
+
+.scoreboard td{
+  padding-left: 1vw;
+  padding-right: 1vw;
 }
+
+
 
 .away-team-logo{
   font-family: 'Merriweather', serif;
@@ -121,5 +126,6 @@ h1 {
 
 /* Highlighting Classes for Winners and Other */
 .highlight {
-  background-color: #4f2134
+  background-color: #2972e8;
+  color: white;
 }
